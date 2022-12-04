@@ -16,7 +16,7 @@
 #include <esp_timer.h>
 #include <driver/gpio.h>
 #include "task/task.h"
-#include "../../turcutils.h"
+#include "../nodemcu-turcutils/turcutils.h"
 
 #define MAX_PULSES 252
 #define IDLE_TIME 6000 // microseconds
@@ -615,15 +615,11 @@ static int irpwm_listen(lua_State* L)
   return 0;
 }
 
-LROT_BEGIN(module)
+LROT_BEGIN(irpwm, NULL, 0)
   LROT_FUNCENTRY(listen, irpwm_listen)
   LROT_FUNCENTRY(txconfig, irpwm_txconfig)
   LROT_FUNCENTRY(send, irpwm_send)
   LROT_FUNCENTRY(stopsend, irpwm_stopsend)
-LROT_END(module, NULL, 0)
+LROT_END(irpwm, NULL, 0)
 
-static int module_init(lua_State* L)
-{
-  return 0;
-}
-NODEMCU_MODULE_STD();
+NODEMCU_MODULE(IRPWM, "irpwm", irpwm, NULL);
