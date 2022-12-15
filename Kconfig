@@ -1,11 +1,7 @@
-menu "External modules"
-
-    config NODEMCU_CMODULE_IRPWM
-        depends on IDF_TARGET_ESP32 && NODEMCU_CMODULE_TURCUTILS
-        bool "IRPWM module"
-        default "n"
-        help
-            Includes the irpwm module from
-            https://github.com/tomsci/nodemcu-irpwm
-
-endmenu
+config NODEMCU_CMODULE_IRPWM
+    depends on IDF_TARGET_ESP32 && NODEMCU_CMODULE_TURCUTILS
+    bool "IRPWM module"
+    default "n"
+    help
+        Includes the irpwm module from
+        https://github.com/tomsci/nodemcu-irpwm
